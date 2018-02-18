@@ -27,9 +27,8 @@ namespace SleepControl
 
             if (!File.Exists(dbPath))
                 SQLiteSleepSessionCommands.CreateDatabase(dbPath);
-            
+
             mSleepSessions = SQLiteSleepSessionCommands.FindAllSessions(dbPath);
-            mSleepSessions = new List<SleepSession>();
             mAdapter = new SleepSessionAdapter(mSleepSessions);
 
             SetContentView(Resource.Layout.Main);
