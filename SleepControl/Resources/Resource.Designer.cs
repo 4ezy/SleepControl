@@ -31,6 +31,51 @@ namespace SleepControl
 		public partial class Attribute
 		{
 			
+			// aapt resource value: 0x7f010000
+			public const int cardBackgroundColor = 2130771968;
+			
+			// aapt resource value: 0x7f010001
+			public const int cardCornerRadius = 2130771969;
+			
+			// aapt resource value: 0x7f010002
+			public const int cardElevation = 2130771970;
+			
+			// aapt resource value: 0x7f010003
+			public const int cardMaxElevation = 2130771971;
+			
+			// aapt resource value: 0x7f010005
+			public const int cardPreventCornerOverlap = 2130771973;
+			
+			// aapt resource value: 0x7f010004
+			public const int cardUseCompatPadding = 2130771972;
+			
+			// aapt resource value: 0x7f010006
+			public const int contentPadding = 2130771974;
+			
+			// aapt resource value: 0x7f01000a
+			public const int contentPaddingBottom = 2130771978;
+			
+			// aapt resource value: 0x7f010007
+			public const int contentPaddingLeft = 2130771975;
+			
+			// aapt resource value: 0x7f010008
+			public const int contentPaddingRight = 2130771976;
+			
+			// aapt resource value: 0x7f010009
+			public const int contentPaddingTop = 2130771977;
+			
+			// aapt resource value: 0x7f01000b
+			public const int layoutManager = 2130771979;
+			
+			// aapt resource value: 0x7f01000d
+			public const int reverseLayout = 2130771981;
+			
+			// aapt resource value: 0x7f01000c
+			public const int spanCount = 2130771980;
+			
+			// aapt resource value: 0x7f01000e
+			public const int stackFromEnd = 2130771982;
+			
 			static Attribute()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -41,11 +86,95 @@ namespace SleepControl
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f040000
+			public const int cardview_dark_background = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int cardview_light_background = 2130968577;
+			
+			// aapt resource value: 0x7f040002
+			public const int cardview_shadow_end_color = 2130968578;
+			
+			// aapt resource value: 0x7f040003
+			public const int cardview_shadow_start_color = 2130968579;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
+		public partial class Dimension
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int cardview_compat_inset_shadow = 2131034112;
+			
+			// aapt resource value: 0x7f050001
+			public const int cardview_default_elevation = 2131034113;
+			
+			// aapt resource value: 0x7f050002
+			public const int cardview_default_radius = 2131034114;
+			
+			// aapt resource value: 0x7f050003
+			public const int item_touch_helper_max_drag_scroll_per_frame = 2131034115;
+			
+			// aapt resource value: 0x7f050004
+			public const int item_touch_helper_swipe_escape_max_velocity = 2131034116;
+			
+			// aapt resource value: 0x7f050005
+			public const int item_touch_helper_swipe_escape_velocity = 2131034117;
+			
+			static Dimension()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Dimension()
+			{
+			}
+		}
+		
+		public partial class Id
+		{
+			
+			// aapt resource value: 0x7f060002
+			public const int captionView = 2131099650;
+			
+			// aapt resource value: 0x7f060003
+			public const int datesView = 2131099651;
+			
+			// aapt resource value: 0x7f060000
+			public const int item_touch_helper_previous_elevation = 2131099648;
+			
+			// aapt resource value: 0x7f060001
+			public const int recyclerView = 2131099649;
+			
+			static Id()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Id()
+			{
+			}
+		}
+		
 		public partial class Layout
 		{
 			
 			// aapt resource value: 0x7f020000
 			public const int Main = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int SleepSessionView = 2130837505;
 			
 			static Layout()
 			{
@@ -60,8 +189,8 @@ namespace SleepControl
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f030000
-			public const int app_name = 2130903040;
+			// aapt resource value: 0x7f070000
+			public const int app_name = 2131165184;
 			
 			static String()
 			{
@@ -69,6 +198,124 @@ namespace SleepControl
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Style
+		{
+			
+			// aapt resource value: 0x7f030001
+			public const int Base_CardView = 2130903041;
+			
+			// aapt resource value: 0x7f030000
+			public const int CardView = 2130903040;
+			
+			// aapt resource value: 0x7f030002
+			public const int CardView_Dark = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int CardView_Light = 2130903043;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Style()
+			{
+			}
+		}
+		
+		public partial class Styleable
+		{
+			
+			public static int[] CardView = new int[] {
+					16843071,
+					16843072,
+					2130771968,
+					2130771969,
+					2130771970,
+					2130771971,
+					2130771972,
+					2130771973,
+					2130771974,
+					2130771975,
+					2130771976,
+					2130771977,
+					2130771978};
+			
+			// aapt resource value: 1
+			public const int CardView_android_minHeight = 1;
+			
+			// aapt resource value: 0
+			public const int CardView_android_minWidth = 0;
+			
+			// aapt resource value: 2
+			public const int CardView_cardBackgroundColor = 2;
+			
+			// aapt resource value: 3
+			public const int CardView_cardCornerRadius = 3;
+			
+			// aapt resource value: 4
+			public const int CardView_cardElevation = 4;
+			
+			// aapt resource value: 5
+			public const int CardView_cardMaxElevation = 5;
+			
+			// aapt resource value: 7
+			public const int CardView_cardPreventCornerOverlap = 7;
+			
+			// aapt resource value: 6
+			public const int CardView_cardUseCompatPadding = 6;
+			
+			// aapt resource value: 8
+			public const int CardView_contentPadding = 8;
+			
+			// aapt resource value: 12
+			public const int CardView_contentPaddingBottom = 12;
+			
+			// aapt resource value: 9
+			public const int CardView_contentPaddingLeft = 9;
+			
+			// aapt resource value: 10
+			public const int CardView_contentPaddingRight = 10;
+			
+			// aapt resource value: 11
+			public const int CardView_contentPaddingTop = 11;
+			
+			public static int[] RecyclerView = new int[] {
+					16842948,
+					16842993,
+					2130771979,
+					2130771980,
+					2130771981,
+					2130771982};
+			
+			// aapt resource value: 1
+			public const int RecyclerView_android_descendantFocusability = 1;
+			
+			// aapt resource value: 0
+			public const int RecyclerView_android_orientation = 0;
+			
+			// aapt resource value: 2
+			public const int RecyclerView_layoutManager = 2;
+			
+			// aapt resource value: 4
+			public const int RecyclerView_reverseLayout = 4;
+			
+			// aapt resource value: 3
+			public const int RecyclerView_spanCount = 3;
+			
+			// aapt resource value: 5
+			public const int RecyclerView_stackFromEnd = 5;
+			
+			static Styleable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Styleable()
 			{
 			}
 		}
