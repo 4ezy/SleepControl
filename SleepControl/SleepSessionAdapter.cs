@@ -13,13 +13,15 @@ using Android.Support.V7.Widget;
 
 namespace SleepControl
 {
-    class SleepSessionAdapter : RecyclerView.Adapter
+    class SleepSessionAdapter : RecyclerView.Adapter, IItemClickListener
     {
-        public List<SleepSession> mSessions;
+        private List<SleepSession> mSessions;
+        private Context context;
 
-        public SleepSessionAdapter(List<SleepSession> sessions)
+        public SleepSessionAdapter(List<SleepSession> sessions, Context context)
         {
             mSessions = sessions;
+            this.context = context;
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
@@ -39,6 +41,15 @@ namespace SleepControl
             vh.Caption.Text = mSessions[position].Caption;
             vh.Dates.Text = $"{mSessions[position].StartSleepTime.ToString("G")} " +
                 $"- {mSessions[position].EndSleepTime.ToString("G")}";
+            vh.SetItemClickListener(this);
+        }
+
+        public void OnClick(View view, int position, bool isLongClick)
+        {
+            if (isLongClick)
+                Toast.MakeText(context, "Long click: " + mSessions[position], ToastLength.Short).Show();
+            else
+                Toast.MakeText(context, "Click: " + mSessions[position], ToastLength.Short).Show();
         }
 
         public override int ItemCount => mSessions.Count;

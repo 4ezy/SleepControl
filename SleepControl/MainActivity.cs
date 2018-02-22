@@ -29,7 +29,7 @@ namespace SleepControl
                 SQLiteSleepSessionCommands.CreateDatabase(dbPath);
 
             mSleepSessions = SQLiteSleepSessionCommands.FindAllSessions(dbPath);
-            mAdapter = new SleepSessionAdapter(mSleepSessions);
+            mAdapter = new SleepSessionAdapter(mSleepSessions, this);
 
             SetContentView(Resource.Layout.Main);
             mRecyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView);
@@ -38,9 +38,6 @@ namespace SleepControl
 
             mLayoutManager = new LinearLayoutManager(this);
             mRecyclerView.SetLayoutManager(mLayoutManager);
-
-            mAdapter = new SleepSessionAdapter(mSleepSessions);
-            mRecyclerView.SetAdapter(mAdapter);
         }
     }
 }
