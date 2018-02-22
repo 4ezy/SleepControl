@@ -13,7 +13,7 @@ using SQLite;
 
 namespace SleepControl
 {
-    class SQLiteSleepSessionCommands
+    static class SQLiteSleepSessionCommands
     {
         public static string CreateDatabase(string path)
         {
@@ -55,6 +55,19 @@ namespace SleepControl
             catch (SQLiteException)
             {
                 return null;
+            }
+        }
+
+        public static void DeleteDatabase(string path)
+        {
+            try
+            {
+                var connection = new SQLiteAsyncConnection(path);
+                connection.DropTableAsync<SleepSession>();
+            }
+            catch (SQLiteException)
+            {
+                return;
             }
         }
     }

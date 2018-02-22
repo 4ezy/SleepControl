@@ -17,6 +17,7 @@ namespace SleepControl
     {
         private List<SleepSession> mSessions;
         private Context context;
+        public Action OnRecyclerViewItemClickAction { get; set; }
 
         public SleepSessionAdapter(List<SleepSession> sessions, Context context)
         {
@@ -46,10 +47,10 @@ namespace SleepControl
 
         public void OnClick(View view, int position, bool isLongClick)
         {
-            if (isLongClick)
-                Toast.MakeText(context, "Long click: " + mSessions[position], ToastLength.Short).Show();
-            else
-                Toast.MakeText(context, "Click: " + mSessions[position], ToastLength.Short).Show();
+            if (!isLongClick)
+            {
+                OnRecyclerViewItemClickAction();
+            }
         }
 
         public override int ItemCount => mSessions.Count;

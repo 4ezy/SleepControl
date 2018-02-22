@@ -6,6 +6,7 @@ using Android.App;
 using Android.Widget;
 using Android.OS;
 using Android.Support.V7.Widget;
+using Android.Content;
 
 namespace SleepControl
 {
@@ -28,12 +29,28 @@ namespace SleepControl
             if (!File.Exists(dbPath))
                 SQLiteSleepSessionCommands.CreateDatabase(dbPath);
 
+            //SQLiteSleepSessionCommands.InsertUpdateData(new SleepSession()
+            //{
+            //    Caption = "Hello",
+            //    StartSleepTime = DateTime.Now,
+            //    EndSleepTime = new DateTime(2018, 2, 23, 11, 0, 0)
+            //}, dbPath);
             mSleepSessions = SQLiteSleepSessionCommands.FindAllSessions(dbPath);
             mAdapter = new SleepSessionAdapter(mSleepSessions, this);
 
             SetContentView(Resource.Layout.Main);
             mRecyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView);
+            FindViewById<Button>(Resource.Id.addButton).Click += delegate
+            {
+                var activity = new Intent(this, typeof(AddSessionActivity));
+                StartActivity(activity);
+            };
 
+            mAdapter.OnRecyclerViewItemClickAction += (() =>
+            {
+                var activity = new Intent(this, typeof(AddSessionActivity));
+                StartActivity(activity);
+            });
             mRecyclerView.SetAdapter(mAdapter);
 
             mLayoutManager = new LinearLayoutManager(this);
