@@ -8,7 +8,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/relativeLayout1">
+        android:id="@+id/relativeLayout1"
+        android:layout_marginTop="10dp">
         <TextView
             android:text="Начало сна:"
             android:textAppearance="?android:attr/textAppearanceSmall"
@@ -19,7 +20,7 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp" />
         <ImageButton
-            android:src="@drawable/button_icon"
+            android:src="@drawable/clock"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:id="@+id/startSleepChooseButton"
@@ -41,7 +42,7 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp" />
         <ImageButton
-            android:src="@drawable/button_icon"
+            android:src="@drawable/clock"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:id="@+id/endSleepChooseButton"
@@ -51,7 +52,7 @@
             android:layout_marginBottom="63.7dp" />
     </RelativeLayout>
     <TextView
-        android:text="Описание"
+        android:text="Описание:"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,7 +71,8 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/relativeLayout2">
+        android:id="@+id/relativeLayout2"
+        android:layout_marginBottom="10dp">
         <Button
             android:text="Отмена"
             android:layout_width="115dp"
