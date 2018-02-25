@@ -89,17 +89,17 @@ namespace SleepControl
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f040000
-			public const int cardview_dark_background = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int cardview_dark_background = 2131034112;
 			
-			// aapt resource value: 0x7f040001
-			public const int cardview_light_background = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int cardview_light_background = 2131034113;
 			
-			// aapt resource value: 0x7f040002
-			public const int cardview_shadow_end_color = 2130968578;
+			// aapt resource value: 0x7f050002
+			public const int cardview_shadow_end_color = 2131034114;
 			
-			// aapt resource value: 0x7f040003
-			public const int cardview_shadow_start_color = 2130968579;
+			// aapt resource value: 0x7f050003
+			public const int cardview_shadow_start_color = 2131034115;
 			
 			static Color()
 			{
@@ -114,23 +114,23 @@ namespace SleepControl
 		public partial class Dimension
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int cardview_compat_inset_shadow = 2131034112;
+			// aapt resource value: 0x7f060000
+			public const int cardview_compat_inset_shadow = 2131099648;
 			
-			// aapt resource value: 0x7f050001
-			public const int cardview_default_elevation = 2131034113;
+			// aapt resource value: 0x7f060001
+			public const int cardview_default_elevation = 2131099649;
 			
-			// aapt resource value: 0x7f050002
-			public const int cardview_default_radius = 2131034114;
+			// aapt resource value: 0x7f060002
+			public const int cardview_default_radius = 2131099650;
 			
-			// aapt resource value: 0x7f050003
-			public const int item_touch_helper_max_drag_scroll_per_frame = 2131034115;
+			// aapt resource value: 0x7f060003
+			public const int item_touch_helper_max_drag_scroll_per_frame = 2131099651;
 			
-			// aapt resource value: 0x7f050004
-			public const int item_touch_helper_swipe_escape_max_velocity = 2131034116;
+			// aapt resource value: 0x7f060004
+			public const int item_touch_helper_swipe_escape_max_velocity = 2131099652;
 			
-			// aapt resource value: 0x7f050005
-			public const int item_touch_helper_swipe_escape_velocity = 2131034117;
+			// aapt resource value: 0x7f060005
+			public const int item_touch_helper_swipe_escape_velocity = 2131099653;
 			
 			static Dimension()
 			{
@@ -142,23 +142,69 @@ namespace SleepControl
 			}
 		}
 		
+		public partial class Drawable
+		{
+			
+			// aapt resource value: 0x7f020000
+			public const int clock = 2130837504;
+			
+			static Drawable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Drawable()
+			{
+			}
+		}
+		
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060001
-			public const int addButton = 2131099649;
+			// aapt resource value: 0x7f07000b
+			public const int addButton = 2131165195;
 			
-			// aapt resource value: 0x7f060003
-			public const int captionView = 2131099651;
+			// aapt resource value: 0x7f07000a
+			public const int cancelSessionButton = 2131165194;
 			
-			// aapt resource value: 0x7f060004
-			public const int datesView = 2131099652;
+			// aapt resource value: 0x7f07000d
+			public const int captionView = 2131165197;
 			
-			// aapt resource value: 0x7f060000
-			public const int item_touch_helper_previous_elevation = 2131099648;
+			// aapt resource value: 0x7f07000e
+			public const int datesView = 2131165198;
 			
-			// aapt resource value: 0x7f060002
-			public const int recyclerView = 2131099650;
+			// aapt resource value: 0x7f070006
+			public const int description = 2131165190;
+			
+			// aapt resource value: 0x7f070007
+			public const int descriptionEditText = 2131165191;
+			
+			// aapt resource value: 0x7f070005
+			public const int endSleepChooseButton = 2131165189;
+			
+			// aapt resource value: 0x7f070004
+			public const int endSleepTextView = 2131165188;
+			
+			// aapt resource value: 0x7f070000
+			public const int item_touch_helper_previous_elevation = 2131165184;
+			
+			// aapt resource value: 0x7f07000c
+			public const int recyclerView = 2131165196;
+			
+			// aapt resource value: 0x7f070001
+			public const int relativeLayout1 = 2131165185;
+			
+			// aapt resource value: 0x7f070008
+			public const int relativeLayout2 = 2131165192;
+			
+			// aapt resource value: 0x7f070009
+			public const int saveSessionButton = 2131165193;
+			
+			// aapt resource value: 0x7f070003
+			public const int startSleepChooseButton = 2131165187;
+			
+			// aapt resource value: 0x7f070002
+			public const int startSleepTextView = 2131165186;
 			
 			static Id()
 			{
@@ -173,14 +219,14 @@ namespace SleepControl
 		public partial class Layout
 		{
 			
-			// aapt resource value: 0x7f020000
-			public const int AddSession = 2130837504;
+			// aapt resource value: 0x7f030000
+			public const int AddSession = 2130903040;
 			
-			// aapt resource value: 0x7f020001
-			public const int Main = 2130837505;
+			// aapt resource value: 0x7f030001
+			public const int Main = 2130903041;
 			
-			// aapt resource value: 0x7f020002
-			public const int SleepSessionView = 2130837506;
+			// aapt resource value: 0x7f030002
+			public const int SleepSessionView = 2130903042;
 			
 			static Layout()
 			{
@@ -195,8 +241,8 @@ namespace SleepControl
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f070000
-			public const int app_name = 2131165184;
+			// aapt resource value: 0x7f080000
+			public const int app_name = 2131230720;
 			
 			static String()
 			{
@@ -211,17 +257,17 @@ namespace SleepControl
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f030001
-			public const int Base_CardView = 2130903041;
+			// aapt resource value: 0x7f040001
+			public const int Base_CardView = 2130968577;
 			
-			// aapt resource value: 0x7f030000
-			public const int CardView = 2130903040;
+			// aapt resource value: 0x7f040000
+			public const int CardView = 2130968576;
 			
-			// aapt resource value: 0x7f030002
-			public const int CardView_Dark = 2130903042;
+			// aapt resource value: 0x7f040002
+			public const int CardView_Dark = 2130968578;
 			
-			// aapt resource value: 0x7f030003
-			public const int CardView_Light = 2130903043;
+			// aapt resource value: 0x7f040003
+			public const int CardView_Light = 2130968579;
 			
 			static Style()
 			{

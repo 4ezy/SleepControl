@@ -21,7 +21,7 @@ namespace SleepControl
             {
                 var connection = new SQLiteAsyncConnection(path);
                 connection.CreateTableAsync<SleepSession>();
-                return "Database created";
+                return "Database created or opened";
             }
             catch (SQLiteException ex)
             {

@@ -13,7 +13,7 @@ namespace SleepControl
     [Activity(Label = "SleepControl", MainLauncher = true)]
     public class MainActivity : Activity
     {
-        readonly string dbPath = Path.Combine(
+        readonly static string dbPath = Path.Combine(
             System.Environment.GetFolderPath(
             System.Environment.SpecialFolder.Personal), 
             "sleepSessions.db3");
@@ -26,9 +26,7 @@ namespace SleepControl
         {
             base.OnCreate(savedInstanceState);
 
-            if (!File.Exists(dbPath))
-                SQLiteSleepSessionCommands.CreateDatabase(dbPath);
-
+            SQLiteSleepSessionCommands.CreateDatabase(dbPath);
             //SQLiteSleepSessionCommands.InsertUpdateData(new SleepSession()
             //{
             //    Caption = "Hello",
