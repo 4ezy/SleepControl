@@ -58,6 +58,7 @@ namespace SleepControl
                     this.Intent.GetStringExtra("dbPath"));
                 var activity = new Intent(this, typeof(MainActivity));
                 StartActivity(activity);
+                this.Finish();
             };
         }
 

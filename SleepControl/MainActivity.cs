@@ -34,6 +34,7 @@ namespace SleepControl
             //    EndSleepTime = new DateTime(2018, 2, 23, 11, 0, 0)
             //}, dbPath);
             mSleepSessions = SQLiteSleepSessionCommands.FindAllSessions(dbPath);
+            mSleepSessions.Reverse();
             mAdapter = new SleepSessionAdapter(mSleepSessions, this);
 
             SetContentView(Resource.Layout.Main);
