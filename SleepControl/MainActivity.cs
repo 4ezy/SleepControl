@@ -41,6 +41,7 @@ namespace SleepControl
             FindViewById<Button>(Resource.Id.addSessionButton).Click += delegate
             {
                 var activity = new Intent(this, typeof(AddSessionActivity));
+                activity.PutExtra("dbPath", dbPath);
                 StartActivity(activity);
             };
 
@@ -56,4 +57,3 @@ namespace SleepControl
         }
     }
 }
-

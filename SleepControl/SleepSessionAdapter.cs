@@ -41,7 +41,7 @@ namespace SleepControl
 
             vh.Caption.Text = mSessions[position].Caption;
             vh.Dates.Text = $"{mSessions[position].StartSleepTime.ToString("G")} " +
-                $"- {mSessions[position].EndSleepTime.ToString("G")}";
+                $"-\n{mSessions[position].EndSleepTime.ToString("G")}";
             vh.SetItemClickListener(this);
         }
 

@@ -164,8 +164,8 @@ namespace SleepControl
 			// aapt resource value: 0x7f07000c
 			public const int addSessionButton = 2131165196;
 			
-			// aapt resource value: 0x7f07000b
-			public const int cancelSessionButton = 2131165195;
+			// aapt resource value: 0x7f07000a
+			public const int cancelSessionButton = 2131165194;
 			
 			// aapt resource value: 0x7f07000e
 			public const int captionView = 2131165198;
@@ -200,8 +200,8 @@ namespace SleepControl
 			// aapt resource value: 0x7f07000d
 			public const int recyclerView = 2131165197;
 			
-			// aapt resource value: 0x7f07000a
-			public const int saveSessionButton = 2131165194;
+			// aapt resource value: 0x7f07000b
+			public const int saveSessionButton = 2131165195;
 			
 			// aapt resource value: 0x7f070003
 			public const int startSleepChooseButton = 2131165187;
