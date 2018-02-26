@@ -38,7 +38,7 @@ namespace SleepControl
 
             SetContentView(Resource.Layout.Main);
             mRecyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView);
-            FindViewById<Button>(Resource.Id.addButton).Click += delegate
+            FindViewById<Button>(Resource.Id.addSessionButton).Click += delegate
             {
                 var activity = new Intent(this, typeof(AddSessionActivity));
                 StartActivity(activity);

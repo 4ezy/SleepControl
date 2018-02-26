@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-    <RelativeLayout
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/relativeLayout1"
+        android:id="@+id/gridLayout1"
         android:layout_marginTop="10dp">
         <TextView
             android:text="Начало сна:"
@@ -18,7 +18,9 @@
             android:id="@+id/startSleepTextView"
             android:layout_centerInParent="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginLeft="10dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_vertical" />
         <ImageButton
             android:src="@drawable/clock"
             android:layout_width="40dp"
@@ -26,12 +28,13 @@
             android:id="@+id/startSleepChooseButton"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <RelativeLayout
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical" />
+    </GridLayout>
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/relativeLayout1">
+        android:id="@+id/gridLayout2">
         <TextView
             android:text="Конец сна:"
             android:textAppearance="?android:attr/textAppearanceSmall"
@@ -40,7 +43,9 @@
             android:id="@+id/endSleepTextView"
             android:layout_centerInParent="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:layout_columnWeight="1" />
         <ImageButton
             android:src="@drawable/clock"
             android:layout_width="40dp"
@@ -48,9 +53,8 @@
             android:id="@+id/endSleepChooseButton"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="63.7dp" />
-    </RelativeLayout>
+            android:layout_centerInParent="true" />
+    </GridLayout>
     <TextView
         android:text="Описание:"
         android:textAppearance="?android:attr/textAppearanceSmall"
@@ -66,12 +70,12 @@
         android:id="@+id/descriptionEditText"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp" />
-    <RelativeLayout
+    <GridLayout
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/relativeLayout2"
+        android:id="@+id/gridLayout3"
         android:layout_marginBottom="10dp">
         <Button
             android:text="Отмена"
@@ -80,7 +84,9 @@
             android:id="@+id/saveSessionButton"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="bottom"
+            android:layout_columnWeight="1" />
         <Button
             android:text="Сохранить"
             android:layout_width="115dp"
@@ -88,6 +94,8 @@
             android:id="@+id/cancelSessionButton"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp" />
-    </RelativeLayout>
+            android:layout_marginRight="10dp"
+            android:layout_gravity="bottom"
+            android:layout_columnWeight="1" />
+    </GridLayout>
 </LinearLayout>
