@@ -8,6 +8,7 @@ using Android.OS;
 using Android.Support.V7.Widget;
 using Android.Content;
 using Android.Runtime;
+using Android.Views;
 
 namespace SleepControl
 {
@@ -77,6 +78,8 @@ namespace SleepControl
                 dialog.Show();
             });
 
+            
+
             mRecyclerView.SetAdapter(mAdapter);
 
             mLayoutManager = new LinearLayoutManager(this);
@@ -87,6 +90,45 @@ namespace SleepControl
         {
             if (resultCode == Result.Ok)
                 this.Recreate();
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.options_menu, menu);
+            return true;
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.action_settings:
+                    {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                        builder.SetTitle("Внимание");
+                        builder.SetMessage("Вы точно хотите удалить все сессии?");
+
+                        builder.SetNegativeButton("Отмена", delegate
+                        {
+                            Toast.MakeText(this, "Действие отменено", ToastLength.Short);
+                        });
+
+                        builder.SetPositiveButton("Подтвердить", delegate
+                        {
+                            SQLiteSleepSessionCommands.DeleteDatabase(dbPath);
+                            Toast.MakeText(this, "Все сессии удалены", ToastLength.Short);
+                            this.Recreate();
+                        });
+
+                        Dialog dialog = builder.Create();
+                        dialog.Show();
+                        break;
+                    }
+                default:
+                    break;
+            }
+
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

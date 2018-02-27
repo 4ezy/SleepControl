@@ -161,6 +161,9 @@ namespace SleepControl
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f070010
+			public const int action_settings = 2131165200;
+			
 			// aapt resource value: 0x7f07000c
 			public const int addSessionButton = 2131165196;
 			
@@ -237,6 +240,22 @@ namespace SleepControl
 			}
 			
 			private Layout()
+			{
+			}
+		}
+		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f090000
+			public const int options_menu = 2131296256;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
 			{
 			}
 		}
