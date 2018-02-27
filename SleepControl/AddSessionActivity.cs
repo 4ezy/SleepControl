@@ -47,18 +47,28 @@ namespace SleepControl
             var cancelSessionButton = FindViewById<Button>(Resource.Id.cancelSessionButton);
             cancelSessionButton.Click += delegate
             {
+                this.SetResult(Result.Canceled);
                 this.Finish();
             };
 
             var addSessionButton = FindViewById<Button>(Resource.Id.saveSessionButton);
             addSessionButton.Click += delegate
             {
-                sleepSession.Caption = FindViewById<EditText>(Resource.Id.descriptionEditText).Text;
-                SQLiteSleepSessionCommands.InsertUpdateData(sleepSession,
-                    this.Intent.GetStringExtra("dbPath"));
-                var activity = new Intent(this, typeof(MainActivity));
-                StartActivity(activity);
-                this.Finish();
+                if (sleepSession.StartSleepTime == DateTime.MinValue ||
+                    sleepSession.EndSleepTime == DateTime.MinValue)
+                {
+                    Toast.MakeText(ApplicationContext,
+                        "Для добавления требуется указать дату начала и конца сна",
+                        ToastLength.Long).Show();
+                }
+                else
+                {
+                    sleepSession.Caption = FindViewById<EditText>(Resource.Id.descriptionEditText).Text;
+                    SQLiteSleepSessionCommands.InsertUpdateData(sleepSession,
+                        this.Intent.GetStringExtra("dbPath"));
+                    this.SetResult(Result.Ok);
+                    this.Finish();
+                }
             };
         }
 

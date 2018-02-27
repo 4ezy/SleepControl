@@ -18,6 +18,7 @@ namespace SleepControl
         private List<SleepSession> mSessions;
         private Context context;
         public Action OnRecyclerViewItemClickAction { get; set; }
+        public Action<int> OnRecyclerViewItemLongClickAction { get; set; }
 
         public SleepSessionAdapter(List<SleepSession> sessions, Context context)
         {
@@ -50,6 +51,10 @@ namespace SleepControl
             if (!isLongClick)
             {
                 OnRecyclerViewItemClickAction();
+            }
+            else
+            {
+                OnRecyclerViewItemLongClickAction(position);
             }
         }
 

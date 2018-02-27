@@ -70,5 +70,18 @@ namespace SleepControl
                 return;
             }
         }
+
+        public static void DeleteSession(string path, SleepSession sleepSession)
+        {
+            try
+            {
+                var connection = new SQLiteConnection(path);
+                connection.Delete<SleepSession>(sleepSession.ID);
+            }
+            catch (SQLiteException)
+            {
+                return;
+            }
+        }
     }
 }
