@@ -66,6 +66,48 @@ namespace SleepControl
                     sleepSession.Caption = FindViewById<EditText>(Resource.Id.descriptionEditText).Text;
                     SQLiteSleepSessionCommands.InsertUpdateData(sleepSession,
                         this.Intent.GetStringExtra("dbPath"));
+
+                    var notificationSwitch = FindViewById<Switch>(Resource.Id.remindSwitch);
+
+                    if (notificationSwitch.Checked)
+                    {
+                        var alarmIntent1 = new Intent(this, typeof(AlarmReceiver));
+                        alarmIntent1.PutExtra("title", "Начало сна");
+                        alarmIntent1.PutExtra("message", sleepSession.Caption);
+                        alarmIntent1.PutExtra("id", 0);
+
+                        var pending1 = PendingIntent.GetBroadcast(this, 0,
+                            alarmIntent1, PendingIntentFlags.UpdateCurrent);
+
+                        var alarmManager1 = GetSystemService(AlarmService).JavaCast<AlarmManager>();
+                        Java.Util.Calendar calendar1 = Java.Util.Calendar.Instance;
+                        calendar1.TimeInMillis = Java.Lang.JavaSystem.CurrentTimeMillis();
+                        calendar1.Set(sleepSession.StartSleepTime.Year,
+                            sleepSession.StartSleepTime.Month,
+                            sleepSession.StartSleepTime.Day,
+                            sleepSession.StartSleepTime.Hour,
+                            sleepSession.StartSleepTime.Minute);
+                        alarmManager1.Set(AlarmType.RtcWakeup, calendar1.TimeInMillis, pending1);
+
+                        var alarmIntent2 = new Intent(this, typeof(AlarmReceiver));
+                        alarmIntent2.PutExtra("title", "Конец сна");
+                        alarmIntent2.PutExtra("message", sleepSession.Caption);
+                        alarmIntent2.PutExtra("id", 1);
+
+                        var pending2 = PendingIntent.GetBroadcast(this, 0,
+                            alarmIntent2, PendingIntentFlags.UpdateCurrent);
+
+                        var alarmManager2 = GetSystemService(AlarmService).JavaCast<AlarmManager>();
+                        Java.Util.Calendar calendar2 = Java.Util.Calendar.Instance;
+                        calendar2.TimeInMillis = Java.Lang.JavaSystem.CurrentTimeMillis();
+                        calendar2.Set(sleepSession.EndSleepTime.Year,
+                            sleepSession.EndSleepTime.Month - 1,
+                            sleepSession.EndSleepTime.Day,
+                            sleepSession.EndSleepTime.Hour,
+                            sleepSession.EndSleepTime.Minute);
+                        alarmManager2.Set(AlarmType.RtcWakeup, calendar2.TimeInMillis, pending2);
+                    }
+
                     this.SetResult(Result.Ok);
                     this.Finish();
                 }
@@ -83,16 +125,16 @@ namespace SleepControl
                         dt = sleepSession.StartSleepTime == DateTime.MinValue ?
                             DateTime.Now : sleepSession.StartSleepTime;
 
-                        if (hourOfDay > dt.Hour && minute > dt.Minute)
+                        if (hourOfDay >= dt.Hour && minute >= dt.Minute)
                         {
                             sleepSession.StartSleepTime = new DateTime(
-                                dt.Year, dt.Month, dt.Day + 1,
+                                dt.Year, dt.Month, dt.Day,
                                 hourOfDay, minute, 0);
                         }
                         else
                         {
                             sleepSession.StartSleepTime = new DateTime(
-                                dt.Year, dt.Month, dt.Day,
+                                dt.Year, dt.Month, dt.Day + 1,
                                 hourOfDay, minute, 0);
                         }
 
@@ -107,20 +149,20 @@ namespace SleepControl
                     }
                 case Resource.Id.endSleepChooseButton:
                     {
-                        dt = sleepSession.StartSleepTime == DateTime.MinValue ?
+                        dt = sleepSession.EndSleepTime == DateTime.MinValue ?
                             DateTime.Now : sleepSession.StartSleepTime;
 
                         if (hourOfDay > sleepSession.StartSleepTime.Hour &&
                             minute > sleepSession.StartSleepTime.Minute)
                         {
                             sleepSession.EndSleepTime = new DateTime(
-                                dt.Year, dt.Month, dt.Day,
+                                dt.Year, dt.Month, dt.Day + 1,
                                 hourOfDay, minute, 0);
                         }
                         else
                         {
                             sleepSession.EndSleepTime = new DateTime(
-                                dt.Year, dt.Month, dt.Day + 1,
+                                dt.Year, dt.Month, dt.Day,
                                  hourOfDay, minute, 0);
                         }
 

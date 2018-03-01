@@ -146,7 +146,10 @@ namespace SleepControl
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int clock = 2130837504;
+			public const int alarm = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int clock = 2130837505;
 			
 			static Drawable()
 			{
@@ -161,20 +164,20 @@ namespace SleepControl
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070010
-			public const int action_settings = 2131165200;
+			// aapt resource value: 0x7f070011
+			public const int action_settings = 2131165201;
 			
-			// aapt resource value: 0x7f07000c
-			public const int addSessionButton = 2131165196;
+			// aapt resource value: 0x7f07000d
+			public const int addSessionButton = 2131165197;
 			
-			// aapt resource value: 0x7f07000a
-			public const int cancelSessionButton = 2131165194;
-			
-			// aapt resource value: 0x7f07000e
-			public const int captionView = 2131165198;
+			// aapt resource value: 0x7f07000b
+			public const int cancelSessionButton = 2131165195;
 			
 			// aapt resource value: 0x7f07000f
-			public const int datesView = 2131165199;
+			public const int captionView = 2131165199;
+			
+			// aapt resource value: 0x7f070010
+			public const int datesView = 2131165200;
 			
 			// aapt resource value: 0x7f070007
 			public const int description = 2131165191;
@@ -194,17 +197,20 @@ namespace SleepControl
 			// aapt resource value: 0x7f070004
 			public const int gridLayout2 = 2131165188;
 			
-			// aapt resource value: 0x7f070009
-			public const int gridLayout3 = 2131165193;
+			// aapt resource value: 0x7f07000a
+			public const int gridLayout3 = 2131165194;
 			
 			// aapt resource value: 0x7f070000
 			public const int item_touch_helper_previous_elevation = 2131165184;
 			
-			// aapt resource value: 0x7f07000d
-			public const int recyclerView = 2131165197;
+			// aapt resource value: 0x7f07000e
+			public const int recyclerView = 2131165198;
 			
-			// aapt resource value: 0x7f07000b
-			public const int saveSessionButton = 2131165195;
+			// aapt resource value: 0x7f070009
+			public const int remindSwitch = 2131165193;
+			
+			// aapt resource value: 0x7f07000c
+			public const int saveSessionButton = 2131165196;
 			
 			// aapt resource value: 0x7f070003
 			public const int startSleepChooseButton = 2131165187;
