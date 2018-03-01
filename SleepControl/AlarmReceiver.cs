@@ -19,7 +19,6 @@ namespace SleepControl
         {
             var message = intent.GetStringExtra("message");
             var title = intent.GetStringExtra("title");
-            var id = intent.GetIntExtra("id", 0);
 
             var resultIntent = new Intent(context, typeof(MainActivity));
             resultIntent.SetFlags(ActivityFlags.NewTask | ActivityFlags.ClearTask);
@@ -38,7 +37,7 @@ namespace SleepControl
             var notification = builder.Build();
 
             var manager = NotificationManager.FromContext(context);
-            manager.Notify(id, notification);
+            manager.Notify(0, notification);
         }
     }
 }

@@ -71,41 +71,22 @@ namespace SleepControl
 
                     if (notificationSwitch.Checked)
                     {
-                        var alarmIntent1 = new Intent(this, typeof(AlarmReceiver));
-                        alarmIntent1.PutExtra("title", "Начало сна");
-                        alarmIntent1.PutExtra("message", sleepSession.Caption);
-                        alarmIntent1.PutExtra("id", 0);
+                        var alarmIntent = new Intent(this, typeof(AlarmReceiver));
+                        alarmIntent.PutExtra("title", "Начало сна");
+                        alarmIntent.PutExtra("message", "Ложитесь спать и не забудьте завести будильник");
 
-                        var pending1 = PendingIntent.GetBroadcast(this, 0,
-                            alarmIntent1, PendingIntentFlags.UpdateCurrent);
+                        var pending = PendingIntent.GetBroadcast(this, 0,
+                            alarmIntent, PendingIntentFlags.UpdateCurrent);
 
-                        var alarmManager1 = GetSystemService(AlarmService).JavaCast<AlarmManager>();
-                        Java.Util.Calendar calendar1 = Java.Util.Calendar.Instance;
-                        calendar1.TimeInMillis = Java.Lang.JavaSystem.CurrentTimeMillis();
-                        calendar1.Set(sleepSession.StartSleepTime.Year,
-                            sleepSession.StartSleepTime.Month,
-                            sleepSession.StartSleepTime.Day,
-                            sleepSession.StartSleepTime.Hour,
-                            sleepSession.StartSleepTime.Minute);
-                        alarmManager1.Set(AlarmType.RtcWakeup, calendar1.TimeInMillis, pending1);
-
-                        var alarmIntent2 = new Intent(this, typeof(AlarmReceiver));
-                        alarmIntent2.PutExtra("title", "Конец сна");
-                        alarmIntent2.PutExtra("message", sleepSession.Caption);
-                        alarmIntent2.PutExtra("id", 1);
-
-                        var pending2 = PendingIntent.GetBroadcast(this, 0,
-                            alarmIntent2, PendingIntentFlags.UpdateCurrent);
-
-                        var alarmManager2 = GetSystemService(AlarmService).JavaCast<AlarmManager>();
-                        Java.Util.Calendar calendar2 = Java.Util.Calendar.Instance;
-                        calendar2.TimeInMillis = Java.Lang.JavaSystem.CurrentTimeMillis();
-                        calendar2.Set(sleepSession.EndSleepTime.Year,
+                        var alarmManager = GetSystemService(AlarmService).JavaCast<AlarmManager>();
+                        Java.Util.Calendar calendar = Java.Util.Calendar.Instance;
+                        calendar.TimeInMillis = Java.Lang.JavaSystem.CurrentTimeMillis();
+                        calendar.Set(sleepSession.EndSleepTime.Year,
                             sleepSession.EndSleepTime.Month - 1,
                             sleepSession.EndSleepTime.Day,
                             sleepSession.EndSleepTime.Hour,
                             sleepSession.EndSleepTime.Minute);
-                        alarmManager2.Set(AlarmType.RtcWakeup, calendar2.TimeInMillis, pending2);
+                        alarmManager.Set(AlarmType.RtcWakeup, calendar.TimeInMillis, pending);
                     }
 
                     this.SetResult(Result.Ok);
