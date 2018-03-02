@@ -20,9 +20,10 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
             android:layout_columnWeight="1"
-            android:layout_gravity="center_vertical" />
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/cardview_light_background" />
         <ImageButton
-            android:src="@drawable/clock"
+            android:src="@drawable/ca"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:id="@+id/startSleepChooseButton"
@@ -45,9 +46,10 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical"
-            android:layout_columnWeight="1" />
+            android:layout_columnWeight="1"
+            android:textColor="@color/cardview_light_background" />
         <ImageButton
-            android:src="@drawable/clock"
+            android:src="@drawable/ca"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:id="@+id/endSleepChooseButton"
@@ -63,46 +65,59 @@
         android:id="@+id/description"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="12dp" />
+        android:layout_marginTop="12dp"
+        android:textColor="@color/cardview_light_background" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/descriptionEditText"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_marginRight="10dp"
+        android:textColor="@color/cardview_light_background" />
     <Switch
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/remindSwitch"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:text="Напомнить" />
+        android:text="Напомнить начале сна"
+        android:textColor="@color/cardview_light_background" />
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/remindSwitch"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Напомнить конце сна"
+        android:textColor="@color/cardview_light_background" />
     <GridLayout
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/gridLayout3"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:columnCount="2"
+        android:rowCount="2">
         <Button
             android:text="Отмена"
-            android:layout_width="115dp"
             android:layout_height="50dp"
             android:id="@+id/cancelSessionButton"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
-            android:layout_gravity="bottom"
-            android:layout_columnWeight="1" />
+            android:layout_gravity="fill_horizontal"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:layout_columnWeight="1"
+            android:textColor="@color/cardview_light_background" />
         <Button
             android:text="Сохранить"
-            android:layout_width="115dp"
             android:layout_height="50dp"
             android:id="@+id/saveSessionButton"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:layout_gravity="bottom"
-            android:layout_columnWeight="1" />
+            android:layout_gravity="fill_horizontal"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:layout_columnWeight="1"
+            android:textColor="@color/cardview_light_background" />
     </GridLayout>
 </LinearLayout>
