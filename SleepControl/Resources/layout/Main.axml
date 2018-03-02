@@ -6,7 +6,7 @@
     <Button
         android:text="Добавить сессию сна"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:id="@+id/addSessionButton" />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
