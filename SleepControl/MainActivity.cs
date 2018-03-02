@@ -19,6 +19,14 @@ namespace SleepControl
             System.Environment.GetFolderPath(
             System.Environment.SpecialFolder.Personal), 
             "sleepSessions.db3");
+
+        readonly static string phoneNumberPath = Path.Combine(
+            System.Environment.GetFolderPath(
+                System.Environment.SpecialFolder.Personal),
+            "pn.dat");
+
+        string phoneNumber;
+
         RecyclerView mRecyclerView;
         RecyclerView.LayoutManager mLayoutManager;
         SleepSessionAdapter mAdapter;
@@ -29,13 +37,11 @@ namespace SleepControl
         {
             base.OnCreate(savedInstanceState);
 
+            if (File.Exists(phoneNumber))
+                File.ReadAllText(phoneNumber);
+
             SQLiteSleepSessionCommands.CreateDatabase(dbPath);
-            //SQLiteSleepSessionCommands.InsertUpdateData(new SleepSession()
-            //{
-            //    Caption = "Hello",
-            //    StartSleepTime = DateTime.Now,
-            //    EndSleepTime = new DateTime(2018, 2, 23, 11, 0, 0)
-            //}, dbPath);
+
             mSleepSessions = SQLiteSleepSessionCommands.FindAllSessions(dbPath);
             mSleepSessions.Reverse();
             mAdapter = new SleepSessionAdapter(mSleepSessions, this);
@@ -77,8 +83,6 @@ namespace SleepControl
                 Dialog dialog = builder.Create();
                 dialog.Show();
             });
-
-            
 
             mRecyclerView.SetAdapter(mAdapter);
 
@@ -124,11 +128,41 @@ namespace SleepControl
                         dialog.Show();
                         break;
                     }
+                case Resource.Id.action_settings1:
+                    {
+                        LayoutInflater li = LayoutInflater.From(this);
+                        View promtsView = li.Inflate(Resource.Layout.promt, null);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                        builder.SetView(promtsView);
+                        EditText editText = promtsView.FindViewById<EditText>(
+                            Resource.Id.phoneNumber);
+                        builder
+                            .SetCancelable(true)
+                            .SetPositiveButton("Ок", delegate
+                        {
+                            phoneNumber = editText.Text;
+                        })
+                        .SetNegativeButton("Отмена", ((object sender, DialogClickEventArgs e) =>
+                        {
+                            var dialog = sender as AlertDialog;
+                            dialog.Cancel();
+                        }));
+
+                        AlertDialog alertDialog = builder.Create();
+                        alertDialog.Show();
+                        break;
+                    }
                 default:
                     break;
             }
 
             return base.OnOptionsItemSelected(item);
+        }
+
+        private void CancelAction(object sender, DialogClickEventArgs e)
+        {
+            var dialog = sender as AlertDialog;
+            dialog.Cancel();
         }
     }
 }

@@ -164,8 +164,11 @@ namespace SleepControl
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070011
-			public const int action_settings = 2131165201;
+			// aapt resource value: 0x7f070014
+			public const int action_settings = 2131165204;
+			
+			// aapt resource value: 0x7f070015
+			public const int action_settings1 = 2131165205;
 			
 			// aapt resource value: 0x7f07000d
 			public const int addSessionButton = 2131165197;
@@ -173,11 +176,11 @@ namespace SleepControl
 			// aapt resource value: 0x7f07000b
 			public const int cancelSessionButton = 2131165195;
 			
-			// aapt resource value: 0x7f07000f
-			public const int captionView = 2131165199;
+			// aapt resource value: 0x7f070012
+			public const int captionView = 2131165202;
 			
-			// aapt resource value: 0x7f070010
-			public const int datesView = 2131165200;
+			// aapt resource value: 0x7f070013
+			public const int datesView = 2131165203;
 			
 			// aapt resource value: 0x7f070007
 			public const int description = 2131165191;
@@ -202,6 +205,15 @@ namespace SleepControl
 			
 			// aapt resource value: 0x7f070000
 			public const int item_touch_helper_previous_elevation = 2131165184;
+			
+			// aapt resource value: 0x7f07000f
+			public const int layout_root = 2131165199;
+			
+			// aapt resource value: 0x7f070011
+			public const int phoneNumber = 2131165201;
+			
+			// aapt resource value: 0x7f070010
+			public const int promtText = 2131165200;
 			
 			// aapt resource value: 0x7f07000e
 			public const int recyclerView = 2131165198;
@@ -238,7 +250,10 @@ namespace SleepControl
 			public const int Main = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int SleepSessionView = 2130903042;
+			public const int promt = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int SleepSessionView = 2130903043;
 			
 			static Layout()
 			{

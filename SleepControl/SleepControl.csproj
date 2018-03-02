@@ -94,6 +94,7 @@
     <Compile Include="AlarmReceiver.cs" />
     <Compile Include="IItemClickListener.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="PhoneReceiver.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SleepSessionViewHolder.cs" />
@@ -110,6 +111,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\AddSession.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\promt.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
