@@ -58,29 +58,52 @@ namespace SleepControl
             }
         }
 
-        public static void DeleteDatabase(string path)
+        public static string DeleteDatabase(string path)
         {
             try
             {
                 var connection = new SQLiteAsyncConnection(path);
                 connection.DropTableAsync<SleepSession>();
+                return "Table dropped";
             }
-            catch (SQLiteException)
+            catch (SQLiteException ex)
             {
-                return;
+                return ex.Message;
             }
         }
 
-        public static void DeleteSession(string path, SleepSession sleepSession)
+        public static string DeleteSession(string path, SleepSession sleepSession)
         {
             try
             {
-                var connection = new SQLiteConnection(path);
-                connection.Delete<SleepSession>(sleepSession.ID);
+                var connection = new SQLiteAsyncConnection(path);
+                connection.DeleteAsync(sleepSession.ID);
+                return "Single data deleted";
             }
-            catch (SQLiteException)
+            catch (SQLiteException ex)
             {
-                return;
+                return ex.Message;
+            }
+        }
+
+        public static string ExportDataAsString(string path)
+        {
+            try
+            {
+                List<SleepSession> sessions = FindAllSessions(path);
+                string str = String.Empty;
+
+                foreach (SleepSession session in sessions)
+                {
+                    str += $"{session.ID}\t{session.Caption}\t" +
+                        $"{session.StartSleepTime}\t{session.EndSleepTime}\t{session.IsTaskDone}\n";
+                }
+
+                return str;
+            }
+            catch (SQLiteException ex)
+            {
+                return ex.Message;
             }
         }
     }
