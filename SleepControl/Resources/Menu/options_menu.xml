@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-  <item android:id="@+id/action_settings" android:title="Удалить все" showAsAction="always" />
-  <item android:id="@+id/action_settings1" android:title="Указать номер" showAsAction="always" />
-  <item android:id="@+id/action_settings2" android:title="Экспорт данных" showAsAction="always" />
+  <item android:id="@+id/action_Delete" android:title="Удалить все" showAsAction="always" />
+  <item android:id="@+id/action_AddNumber" android:title="Указать номер" showAsAction="always" />
+  <item android:id="@+id/action_Export" android:title="Экспорт данных" showAsAction="always" />
 </menu>

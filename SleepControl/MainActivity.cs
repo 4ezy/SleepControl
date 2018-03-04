@@ -106,7 +106,7 @@ namespace SleepControl
         {
             switch (item.ItemId)
             {
-                case Resource.Id.action_settings:
+                case Resource.Id.action_Delete:
                     {
                         AlertDialog.Builder builder = new AlertDialog.Builder(this);
                         builder.SetTitle("Внимание");
@@ -128,7 +128,7 @@ namespace SleepControl
                         dialog.Show();
                         break;
                     }
-                case Resource.Id.action_settings1:
+                case Resource.Id.action_AddNumber:
                     {
                         LayoutInflater li = LayoutInflater.From(this);
                         View promtsView = li.Inflate(Resource.Layout.promt, null);
@@ -147,6 +147,56 @@ namespace SleepControl
                             var dialog = sender as AlertDialog;
                             dialog.Cancel();
                         }));
+
+                        AlertDialog alertDialog = builder.Create();
+                        alertDialog.Show();
+                        break;
+                    }
+                case Resource.Id.action_Export:
+                    {
+                        string data = SQLiteSleepSessionCommands.ExportDataAsString(dbPath);
+                        string tmpFilePath = Path.Combine(
+                            System.Environment.GetFolderPath(
+                                System.Environment.SpecialFolder.Personal),
+                            "data.txt");
+
+                        File.Create(tmpFilePath);
+
+                        LayoutInflater li = LayoutInflater.From(this);
+                        View exportView = li.Inflate(Resource.Layout.emailExport, null);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                        builder.SetView(exportView);
+                        EditText editText = exportView.FindViewById<EditText>(
+                            Resource.Id.emailAddress);
+
+                        builder
+                            .SetCancelable(true)
+                            .SetPositiveButton("Ок", delegate
+                            {
+                                string email = editText.Text;
+                                Intent i = new Intent(Intent.ActionSend);
+                                i.SetType("message/rfc822");
+                                i.PutExtra(Intent.ExtraEmail, new String[] { email });
+                                i.PutExtra(Intent.ExtraSubject, "Экспортируемые данные");
+                                i.PutExtra(Intent.ExtraStream, tmpFilePath);
+
+                                try
+                                {
+                                    StartActivity(Intent.CreateChooser(i, "Выберите приложение..."));
+                                }
+                                catch (ActivityNotFoundException)
+                                {
+                                    Toast.MakeText(this, "Почтовый клиент не установлен",
+                                        ToastLength.Short).Show();
+                                }
+                            })
+                        .SetNegativeButton("Отмена", ((object sender, DialogClickEventArgs e) =>
+                        {
+                            var dialog = sender as AlertDialog;
+                            dialog.Cancel();
+                        }));
+
+                        File.Delete(tmpFilePath);
 
                         AlertDialog alertDialog = builder.Create();
                         alertDialog.Show();

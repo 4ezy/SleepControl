@@ -164,11 +164,14 @@ namespace SleepControl
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070016
-			public const int action_settings = 2131165206;
+			// aapt resource value: 0x7f070018
+			public const int action_AddNumber = 2131165208;
 			
 			// aapt resource value: 0x7f070017
-			public const int action_settings1 = 2131165207;
+			public const int action_Delete = 2131165207;
+			
+			// aapt resource value: 0x7f070019
+			public const int action_Export = 2131165209;
 			
 			// aapt resource value: 0x7f070010
 			public const int addSessionButton = 2131165200;
@@ -176,17 +179,20 @@ namespace SleepControl
 			// aapt resource value: 0x7f07000b
 			public const int cancelSessionButton = 2131165195;
 			
-			// aapt resource value: 0x7f070014
-			public const int captionView = 2131165204;
-			
 			// aapt resource value: 0x7f070015
-			public const int datesView = 2131165205;
+			public const int captionView = 2131165205;
+			
+			// aapt resource value: 0x7f070016
+			public const int datesView = 2131165206;
 			
 			// aapt resource value: 0x7f070007
 			public const int description = 2131165191;
 			
 			// aapt resource value: 0x7f070008
 			public const int descriptionEditText = 2131165192;
+			
+			// aapt resource value: 0x7f07000f
+			public const int emailAddress = 2131165199;
 			
 			// aapt resource value: 0x7f070006
 			public const int endSleepChooseButton = 2131165190;
@@ -212,8 +218,8 @@ namespace SleepControl
 			// aapt resource value: 0x7f07000d
 			public const int layout_root_export = 2131165197;
 			
-			// aapt resource value: 0x7f07000f
-			public const int phoneNumber = 2131165199;
+			// aapt resource value: 0x7f070014
+			public const int phoneNumber = 2131165204;
 			
 			// aapt resource value: 0x7f07000e
 			public const int promtEmailText = 2131165198;
