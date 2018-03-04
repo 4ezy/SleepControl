@@ -164,26 +164,26 @@ namespace SleepControl
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070018
-			public const int action_AddNumber = 2131165208;
-			
-			// aapt resource value: 0x7f070017
-			public const int action_Delete = 2131165207;
-			
 			// aapt resource value: 0x7f070019
-			public const int action_Export = 2131165209;
+			public const int action_AddNumber = 2131165209;
 			
-			// aapt resource value: 0x7f070010
-			public const int addSessionButton = 2131165200;
+			// aapt resource value: 0x7f070018
+			public const int action_Delete = 2131165208;
 			
-			// aapt resource value: 0x7f07000b
-			public const int cancelSessionButton = 2131165195;
+			// aapt resource value: 0x7f07001a
+			public const int action_Export = 2131165210;
 			
-			// aapt resource value: 0x7f070015
-			public const int captionView = 2131165205;
+			// aapt resource value: 0x7f070011
+			public const int addSessionButton = 2131165201;
+			
+			// aapt resource value: 0x7f07000c
+			public const int cancelSessionButton = 2131165196;
 			
 			// aapt resource value: 0x7f070016
-			public const int datesView = 2131165206;
+			public const int captionView = 2131165206;
+			
+			// aapt resource value: 0x7f070017
+			public const int datesView = 2131165207;
 			
 			// aapt resource value: 0x7f070007
 			public const int description = 2131165191;
@@ -191,8 +191,8 @@ namespace SleepControl
 			// aapt resource value: 0x7f070008
 			public const int descriptionEditText = 2131165192;
 			
-			// aapt resource value: 0x7f07000f
-			public const int emailAddress = 2131165199;
+			// aapt resource value: 0x7f070010
+			public const int emailAddress = 2131165200;
 			
 			// aapt resource value: 0x7f070006
 			public const int endSleepChooseButton = 2131165190;
@@ -206,35 +206,38 @@ namespace SleepControl
 			// aapt resource value: 0x7f070004
 			public const int gridLayout2 = 2131165188;
 			
-			// aapt resource value: 0x7f07000a
-			public const int gridLayout3 = 2131165194;
+			// aapt resource value: 0x7f07000b
+			public const int gridLayout3 = 2131165195;
 			
 			// aapt resource value: 0x7f070000
 			public const int item_touch_helper_previous_elevation = 2131165184;
 			
-			// aapt resource value: 0x7f070012
-			public const int layout_root = 2131165202;
-			
-			// aapt resource value: 0x7f07000d
-			public const int layout_root_export = 2131165197;
-			
-			// aapt resource value: 0x7f070014
-			public const int phoneNumber = 2131165204;
+			// aapt resource value: 0x7f070013
+			public const int layout_root = 2131165203;
 			
 			// aapt resource value: 0x7f07000e
-			public const int promtEmailText = 2131165198;
+			public const int layout_root_export = 2131165198;
 			
-			// aapt resource value: 0x7f070013
-			public const int promtText = 2131165203;
+			// aapt resource value: 0x7f070015
+			public const int phoneNumber = 2131165205;
 			
-			// aapt resource value: 0x7f070011
-			public const int recyclerView = 2131165201;
+			// aapt resource value: 0x7f07000f
+			public const int promtEmailText = 2131165199;
+			
+			// aapt resource value: 0x7f070014
+			public const int promtText = 2131165204;
+			
+			// aapt resource value: 0x7f070012
+			public const int recyclerView = 2131165202;
 			
 			// aapt resource value: 0x7f070009
 			public const int remindSwitch = 2131165193;
 			
-			// aapt resource value: 0x7f07000c
-			public const int saveSessionButton = 2131165196;
+			// aapt resource value: 0x7f07000d
+			public const int saveSessionButton = 2131165197;
+			
+			// aapt resource value: 0x7f07000a
+			public const int smsRemindSwitch = 2131165194;
 			
 			// aapt resource value: 0x7f070003
 			public const int startSleepChooseButton = 2131165187;

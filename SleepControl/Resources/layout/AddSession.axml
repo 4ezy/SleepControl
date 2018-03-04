@@ -82,17 +82,17 @@
         android:id="@+id/remindSwitch"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:text="Напомнить начале сна"
+        android:text="Напомнить о начале сна"
         android:textColor="@color/cardview_light_background"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp" />
     <Switch
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/remindSwitch"
+        android:id="@+id/smsRemindSwitch"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:text="Напомнить конце сна"
+        android:text="Напомнить о конце сна"
         android:textColor="@color/cardview_light_background"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp" />

@@ -10,6 +10,8 @@ using Android.Content;
 using Android.Runtime;
 using Android.Views;
 using System.Text;
+using Android.Provider;
+using Android.Database;
 
 namespace SleepControl
 {
@@ -26,20 +28,19 @@ namespace SleepControl
                 System.Environment.SpecialFolder.Personal),
             "pn.dat");
 
-        string phoneNumber;
-
         RecyclerView mRecyclerView;
         RecyclerView.LayoutManager mLayoutManager;
         SleepSessionAdapter mAdapter;
         List<SleepSession> mSleepSessions;
-        readonly static int addSessionRequestCode = 1;
+        const int addSessionRequestCode = 1;
+        const int addPhoneNumberRequestCode = 2;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            if (File.Exists(phoneNumber))
-                File.ReadAllText(phoneNumber);
+            if (File.Exists(phoneNumberPath))
+                File.ReadAllText(phoneNumberPath);
 
             SQLiteSleepSessionCommands.CreateDatabase(dbPath);
 
@@ -93,8 +94,39 @@ namespace SleepControl
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
-            if (resultCode == Result.Ok)
-                this.Recreate();
+            switch (requestCode)
+            {
+                case addSessionRequestCode:
+                    {
+                        if (resultCode == Result.Ok)
+                            this.Recreate();
+
+                        break;
+                    }
+                case addPhoneNumberRequestCode:
+                    {
+                        if (data != null)
+                        {
+                            string phoneNo = null;
+                            Android.Net.Uri uri = data.Data;
+                            ICursor cursor = ContentResolver.Query(uri, null, null, null, null);
+
+                            if (cursor.MoveToFirst())
+                            {
+                                int phoneIndex = cursor.GetColumnIndex(
+                                    ContactsContract.CommonDataKinds.Phone.Number);
+                                phoneNo = cursor.GetString(phoneIndex);
+                            }
+                            cursor.Close();
+                            File.WriteAllText(phoneNumberPath, phoneNo);
+                            Toast.MakeText(this, "Номер успешно изменён", ToastLength.Short);
+                        }
+
+                        break;
+                    }
+                default:
+                    break;
+            }
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -131,26 +163,10 @@ namespace SleepControl
                     }
                 case Resource.Id.action_AddNumber:
                     {
-                        LayoutInflater li = LayoutInflater.From(this);
-                        View promtsView = li.Inflate(Resource.Layout.promt, null);
-                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                        builder.SetView(promtsView);
-                        EditText editText = promtsView.FindViewById<EditText>(
-                            Resource.Id.phoneNumber);
-                        builder
-                            .SetCancelable(true)
-                            .SetPositiveButton("Ок", delegate
-                        {
-                            phoneNumber = editText.Text;
-                        })
-                        .SetNegativeButton("Отмена", ((object sender, DialogClickEventArgs e) =>
-                        {
-                            var dialog = sender as AlertDialog;
-                            dialog.Cancel();
-                        }));
-
-                        AlertDialog alertDialog = builder.Create();
-                        alertDialog.Show();
+                        Intent intent = new Intent(Intent.ActionPick,
+                                ContactsContract.CommonDataKinds.Phone.ContentUri);
+                        StartActivityForResult(intent,
+                            addPhoneNumberRequestCode);
                         break;
                     }
                 case Resource.Id.action_Export:
@@ -209,12 +225,6 @@ namespace SleepControl
             }
 
             return base.OnOptionsItemSelected(item);
-        }
-
-        private void CancelAction(object sender, DialogClickEventArgs e)
-        {
-            var dialog = sender as AlertDialog;
-            dialog.Cancel();
         }
     }
 }

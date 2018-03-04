@@ -12,12 +12,14 @@ using Android.Widget;
 using Java.Util;
 using Java.Text;
 using static Android.App.TimePickerDialog;
+using System.IO;
 
 namespace SleepControl
 {
     [Activity(Label = "SleepControl - Добавить сессию")]
     public class AddSessionActivity : Activity, IOnTimeSetListener
     {
+        private string numberStr;
         private int timeSetButtonId;
         private SleepSession sleepSession = new SleepSession();
 
@@ -51,6 +53,18 @@ namespace SleepControl
                 this.Finish();
             };
 
+            numberStr = File.ReadAllText(Path.Combine(
+                            System.Environment.GetFolderPath(
+                                System.Environment.SpecialFolder.Personal),
+                            "pn.dat"));
+
+            var smsSwith = FindViewById<Switch>(Resource.Id.smsRemindSwitch);
+
+            if (numberStr is null)
+                smsSwith.Visibility = ViewStates.Invisible;
+            else
+                smsSwith.Visibility = ViewStates.Visible;
+
             var addSessionButton = FindViewById<Button>(Resource.Id.saveSessionButton);
             addSessionButton.Click += delegate
             {
@@ -81,11 +95,34 @@ namespace SleepControl
                         var alarmManager = GetSystemService(AlarmService).JavaCast<AlarmManager>();
                         Java.Util.Calendar calendar = Java.Util.Calendar.Instance;
                         calendar.TimeInMillis = Java.Lang.JavaSystem.CurrentTimeMillis();
+                        calendar.Set(sleepSession.StartSleepTime.Year,
+                            sleepSession.StartSleepTime.Month - 1,
+                            sleepSession.StartSleepTime.Day,
+                            sleepSession.StartSleepTime.Hour,
+                            sleepSession.StartSleepTime.Minute,
+                            0);
+                        alarmManager.Set(AlarmType.RtcWakeup, calendar.TimeInMillis, pending);
+                    }
+
+                    var smsNotificationSwitch = FindViewById<Switch>(Resource.Id.smsRemindSwitch);
+
+                    if (smsNotificationSwitch.Checked)
+                    {
+                        var alarmIntent = new Intent(this, typeof(PhoneReceiver));
+
+                        alarmIntent.PutExtra("number", numberStr);
+                        alarmIntent.PutExtra("message", "Доброе утро");
+                        var pending = PendingIntent.GetBroadcast(this, 0,
+                            alarmIntent, PendingIntentFlags.UpdateCurrent);
+                        var alarmManager = GetSystemService(AlarmService).JavaCast<AlarmManager>();
+                        Java.Util.Calendar calendar = Java.Util.Calendar.Instance;
+                        calendar.TimeInMillis = Java.Lang.JavaSystem.CurrentTimeMillis();
                         calendar.Set(sleepSession.EndSleepTime.Year,
                             sleepSession.EndSleepTime.Month - 1,
                             sleepSession.EndSleepTime.Day,
                             sleepSession.EndSleepTime.Hour,
-                            sleepSession.EndSleepTime.Minute);
+                            sleepSession.EndSleepTime.Minute,
+                            0);
                         alarmManager.Set(AlarmType.RtcWakeup, calendar.TimeInMillis, pending);
                     }
 
