@@ -44,6 +44,35 @@ namespace SleepControl
             }
         }
 
+        public static string ReplaceData(SleepSession data, string path)
+        {
+            try
+            {
+                var db = new SQLiteAsyncConnection(path);
+                db.InsertOrReplaceAsync(data);
+                return "Single data file inserted or updated";
+            }
+            catch (SQLiteException ex)
+            {
+                return ex.Message;
+            }
+        }
+
+        public static SleepSession FindSessionById(string path, int id)
+        {
+            try
+            {
+                var db = new SQLiteAsyncConnection(path);
+                var res = FindAllSessions(path).
+                    Where(session => session.ID == id).First();
+                return res;
+            }
+            catch (SQLiteException)
+            {
+                return null;
+            }
+        }
+
         public static List<SleepSession> FindAllSessions(string path)
         {
             try
@@ -77,7 +106,8 @@ namespace SleepControl
             try
             {
                 var connection = new SQLiteAsyncConnection(path);
-                connection.DeleteAsync(sleepSession.ID);
+                connection.Table<SleepSession>().Where(
+                    session => session.ID == sleepSession.ID);
                 return "Single data deleted";
             }
             catch (SQLiteException ex)

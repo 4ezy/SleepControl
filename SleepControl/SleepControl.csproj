@@ -92,6 +92,7 @@
   <ItemGroup>
     <Compile Include="AddSessionActivity.cs" />
     <Compile Include="AlarmReceiver.cs" />
+    <Compile Include="ChangeSessionActivity.cs" />
     <Compile Include="IItemClickListener.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="PhoneReceiver.cs" />
@@ -117,6 +118,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\emailExport.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ChangeSession.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

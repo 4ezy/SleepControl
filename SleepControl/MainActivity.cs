@@ -34,6 +34,7 @@ namespace SleepControl
         List<SleepSession> mSleepSessions;
         const int addSessionRequestCode = 1;
         const int addPhoneNumberRequestCode = 2;
+        const int changeSessionRequestCode = 3;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -57,13 +58,14 @@ namespace SleepControl
                 StartActivityForResult(activity, addSessionRequestCode);
             };
 
-            mAdapter.OnRecyclerViewItemClickAction += (() =>
+            mAdapter.OnRecyclerViewItemClickAction += ((position) =>
             {
-                var activity = new Intent(this, typeof(AddSessionActivity));
-                StartActivity(activity);
+                var activity = new Intent(this, typeof(ChangeSessionActivity));
+                activity.PutExtra("id", mSleepSessions[position].ID);
+                StartActivityForResult(activity, changeSessionRequestCode);
             });
 
-            mAdapter.OnRecyclerViewItemLongClickAction += ((int position) =>
+            mAdapter.OnRecyclerViewItemLongClickAction += ((position) =>
             {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.SetTitle("Внимание");
@@ -71,14 +73,14 @@ namespace SleepControl
 
                 builder.SetNegativeButton("Отмена", delegate 
                 {
-                    Toast.MakeText(this, "Действие отменено", ToastLength.Short);
+                    Toast.MakeText(this, "Действие отменено", ToastLength.Short).Show();
                 });
 
                 builder.SetPositiveButton("Подтвердить", delegate
                 {
                     SQLiteSleepSessionCommands.DeleteSession(dbPath,
                         mSleepSessions[position]);
-                    Toast.MakeText(this, "Удалено", ToastLength.Short);
+                    Toast.MakeText(this, "Удалено", ToastLength.Short).Show();
                     this.Recreate();
                 });
 
@@ -99,7 +101,22 @@ namespace SleepControl
                 case addSessionRequestCode:
                     {
                         if (resultCode == Result.Ok)
+                        {
                             this.Recreate();
+                            Toast.MakeText(this, "Сессия сна успешно добавлена",
+                                ToastLength.Short).Show();
+                        } 
+
+                        break;
+                    }
+                case changeSessionRequestCode:
+                    {
+                        if (resultCode == Result.Ok)
+                        {
+                            this.Recreate();
+                            Toast.MakeText(this, "Сессия сна успешно изменена",
+                                ToastLength.Short).Show();
+                        }
 
                         break;
                     }
@@ -119,7 +136,7 @@ namespace SleepControl
                             }
                             cursor.Close();
                             File.WriteAllText(phoneNumberPath, phoneNo);
-                            Toast.MakeText(this, "Номер успешно изменён", ToastLength.Short);
+                            Toast.MakeText(this, "Номер успешно изменён", ToastLength.Short).Show();
                         }
 
                         break;
@@ -147,13 +164,13 @@ namespace SleepControl
 
                         builder.SetNegativeButton("Отмена", delegate
                         {
-                            Toast.MakeText(this, "Действие отменено", ToastLength.Short);
+                            Toast.MakeText(this, "Действие отменено", ToastLength.Short).Show();
                         });
 
                         builder.SetPositiveButton("Подтвердить", delegate
                         {
                             SQLiteSleepSessionCommands.DeleteDatabase(dbPath);
-                            Toast.MakeText(this, "Все сессии удалены", ToastLength.Short);
+                            Toast.MakeText(this, "Все сессии удалены", ToastLength.Short).Show();
                             this.Recreate();
                         });
 
