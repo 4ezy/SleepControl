@@ -9,6 +9,7 @@ using Android.Support.V7.Widget;
 using Android.Content;
 using Android.Runtime;
 using Android.Views;
+using System.Text;
 
 namespace SleepControl
 {
@@ -156,11 +157,10 @@ namespace SleepControl
                     {
                         string data = SQLiteSleepSessionCommands.ExportDataAsString(dbPath);
                         string tmpFilePath = Path.Combine(
-                            System.Environment.GetFolderPath(
-                                System.Environment.SpecialFolder.Personal),
+                            this.ApplicationContext.ExternalCacheDir.AbsolutePath,
                             "data.txt");
 
-                        File.Create(tmpFilePath);
+                        File.WriteAllText(tmpFilePath, data, Encoding.Default);
 
                         LayoutInflater li = LayoutInflater.From(this);
                         View exportView = li.Inflate(Resource.Layout.emailExport, null);
@@ -173,12 +173,16 @@ namespace SleepControl
                             .SetCancelable(true)
                             .SetPositiveButton("Ок", delegate
                             {
-                                string email = editText.Text;
+                                string to = editText.Text;
                                 Intent i = new Intent(Intent.ActionSend);
+                                i.AddFlags(ActivityFlags.GrantReadUriPermission);
                                 i.SetType("message/rfc822");
-                                i.PutExtra(Intent.ExtraEmail, new String[] { email });
+                                i.PutExtra(Intent.ExtraEmail, new String[] { to });
                                 i.PutExtra(Intent.ExtraSubject, "Экспортируемые данные");
-                                i.PutExtra(Intent.ExtraStream, tmpFilePath);
+                                Java.IO.File file = new Java.IO.File(tmpFilePath);
+                                file.SetReadable(true, false);
+                                Android.Net.Uri uri = Android.Net.Uri.FromFile(file);
+                                i.PutExtra(Intent.ExtraStream, uri);
 
                                 try
                                 {
@@ -195,8 +199,6 @@ namespace SleepControl
                             var dialog = sender as AlertDialog;
                             dialog.Cancel();
                         }));
-
-                        File.Delete(tmpFilePath);
 
                         AlertDialog alertDialog = builder.Create();
                         alertDialog.Show();
