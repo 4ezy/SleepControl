@@ -53,10 +53,11 @@ namespace SleepControl
                 this.Finish();
             };
 
-            numberStr = File.ReadAllText(Path.Combine(
-                            System.Environment.GetFolderPath(
-                                System.Environment.SpecialFolder.Personal),
-                            "pn.dat"));
+            string path = Path.Combine(System.Environment.GetFolderPath(
+                                System.Environment.SpecialFolder.Personal), "pn.dat");
+
+            if (File.Exists(path))
+                numberStr = File.ReadAllText(path);
 
             var smsSwith = FindViewById<Switch>(Resource.Id.smsRemindSwitch);
 
@@ -174,14 +175,16 @@ namespace SleepControl
                             minute > sleepSession.StartSleepTime.Minute)
                         {
                             sleepSession.EndSleepTime = new DateTime(
-                                dt.Year, dt.Month, dt.Day + 1,
+                                sleepSession.StartSleepTime.Year, sleepSession.StartSleepTime.Month, 
+                                sleepSession.StartSleepTime.Day,
                                 hourOfDay, minute, 0);
                         }
                         else
                         {
                             sleepSession.EndSleepTime = new DateTime(
-                                dt.Year, dt.Month, dt.Day,
-                                 hourOfDay, minute, 0);
+                                sleepSession.StartSleepTime.Year, sleepSession.StartSleepTime.Month,
+                                sleepSession.StartSleepTime.Day + 1,
+                                hourOfDay, minute, 0);
                         }
 
                         var endSleepTextView = FindViewById<TextView>(Resource.Id.endSleepTextView);

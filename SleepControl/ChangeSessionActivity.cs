@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace SleepControl
 {
-    [Activity(Label = "ChangeSessionActivity")]
+    [Activity(Label = "SleepControl - Изменить сессию")]
     public class ChangeSessionActivity : Activity
     {
         readonly static string dbPath = Path.Combine(
