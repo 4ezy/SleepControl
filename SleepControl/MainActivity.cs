@@ -40,9 +40,6 @@ namespace SleepControl
         {
             base.OnCreate(savedInstanceState);
 
-            if (File.Exists(phoneNumberPath))
-                File.ReadAllText(phoneNumberPath);
-
             SQLiteSleepSessionCommands.CreateDatabase(dbPath);
 
             mSleepSessions = SQLiteSleepSessionCommands.FindAllSessions(dbPath);
