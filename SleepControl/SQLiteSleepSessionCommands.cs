@@ -106,8 +106,7 @@ namespace SleepControl
             try
             {
                 var connection = new SQLiteAsyncConnection(path);
-                connection.Table<SleepSession>().Where(
-                    session => session.ID == sleepSession.ID);
+                int res = connection.DeleteAsync(sleepSession).Result;
                 return "Single data deleted";
             }
             catch (SQLiteException ex)
